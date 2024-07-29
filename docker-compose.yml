@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: swathi/spring-docker-jenkins
+    image: swathip2003/spring-docker-jenkins
     build:
       context: .
       dockerfile: Dockerfile
