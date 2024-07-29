@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    image: swathi/spring-docker-jenkins
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9097:9097"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/sicet
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: pass@word1
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: sicet
+      MYSQL_ROOT_PASSWORD: pass@word1
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
